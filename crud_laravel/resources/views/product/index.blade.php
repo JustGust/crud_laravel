@@ -3,7 +3,7 @@
 @section('content')
 
             <div class="container">
-                <h3 class="h3">shopping Demo-1 </h3>
+                <h3 class="h3">Lista de productos </h3>
                 <div class="row">
 
                     @foreach( $products as $product)
@@ -15,8 +15,13 @@
                                     <img class="pic-1" src="{{ asset('storage').'/'.$product->photo}}">
                                 </a>
                                 <ul class="social">
-                                    <li><a href="" data-tip="Editar"><i class="fa fa-pencil"></i></a></li>
-                                    <li><a href="" data-tip="Add to Cart"><i class="fa fa-trash"></i></a></li>
+                                    <form action="{{ url('/product/'.$product->id) }}" method="post">
+                                        @csrf
+                                        {{ method_field('DELETE') }}
+                                    <button type="submit" onclick="return confirm('¿Deseas eliminar este registro?')"  class="btn btn-outline-light"><i class="fa fa-trash"></i></button>
+                                    </form>
+
+                                    <li><a type="submit" ><i class="fa fa-pencil"></i></a></li>
                                 </ul>
                                 <span class="product-new-label">Rebaja</span>
                                 <span class="product-discount-label">0%</span>

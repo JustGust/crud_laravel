@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+ 
     /**
      * Display a listing of the resource.
      *
@@ -88,8 +89,13 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+       Product::destroy($id);
+
+       $message = '¡El producto fue eliminado con éxito!';
+       
+     return redirect("product");
     }
+
 }

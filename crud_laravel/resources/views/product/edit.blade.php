@@ -1,1 +1,1 @@
-editar producto..
+@include('product.form');
